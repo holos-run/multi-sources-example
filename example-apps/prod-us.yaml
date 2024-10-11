@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-us-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod-us
+  sources:
+    - repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
+      path: my-chart
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+        - $values/my-values/common-values.yaml          
+        - $values/my-values/app-version/prod-values.yaml               
+        - $values/my-values/env-type/prod-values.yaml  
+        - $values/my-values/regions/us-values.yaml                
+        - $values/my-values/envs/prod-us-values.yaml
+    - repoURL: 'https://github.com/kostis-codefresh/multi-sources-example.git'
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true  
+    automated: 
+      prune: true
+      selfHeal: true
