@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: trivial-go-web-app
+  template:
+    metadata:
+      labels:
+        app: trivial-go-web-app
+    spec:
+      containers:
+      - name: webserver-simple
+        imagePullPolicy: Always
+        image: docker.io/kostiscodefresh/simple-env-app:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ENV
+          value: {{ .Values.environmentType }}
+        - name: GPU_ENABLED
+          value: {{ .Values.replicaCount }}
+        - name: UI_THEME
+          value: {{ .Values.userInterfaceTheme }}
+        - name: CACHE_SIZE
+          value: {{ .Values.cacheSize }}
+        - name: PAGE_LIMIT
+          value: {{ .Values.pageLimit }}
+        - name: SORTING
+          value: {{ .Values.sorting }}    
+        - name: N_BUCKETS
+          value: {{ .Values.nBuckets }}            
+
+
+

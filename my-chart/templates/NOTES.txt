@@ -1,0 +1,10 @@
+Application was deployed
+
+Environment {{.Values.environmentType }}
+Replicas {{.Values.replicaCount }}
+Region {{.Values.targetRegion }}
+Theme {{.Values.userInterfaceTheme }}
+Cache size: {{.Values.cacheSize }}
+       
+
+
