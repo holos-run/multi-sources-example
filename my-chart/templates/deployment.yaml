@@ -16,7 +16,7 @@ spec:
       containers:
       - name: webserver-simple
         imagePullPolicy: Always
-        image: docker.io/kostiscodefresh/simple-env-app:1.0
+        image: docker.io/kostiscodefresh/simple-env-app:{{ .Values.imageVersion }}
         ports:
         - containerPort: 8080
         env:

@@ -5,6 +5,9 @@
 # Kubernetes settings
 replicaCount: 1
 
+# Application image version
+imageVersion: "1.0"
+
 # Environment settings
 environment: dev
 environmentType: non-prod

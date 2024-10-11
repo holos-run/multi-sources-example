@@ -1,5 +1,6 @@
 Application was deployed.
 
+Version {{.Values.imageVersion }}
 Environment {{.Values.environment }}
 Type {{.Values.environmentType }}
 Replicas {{.Values.replicaCount }}
