@@ -1,0 +1,17 @@
+# Default values for my-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+
+# Environment settings
+environment: integration-gpu
+environmentType: non-prod
+
+# Application settings
+userInterfaceTheme: "light"
+cacheSize: "1024kb"
+gpuEnabled: "1"
+pageLimit: "50"
+sorting: "Ascending"
+nBuckets: "42"
