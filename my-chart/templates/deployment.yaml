@@ -21,19 +21,29 @@ spec:
         - containerPort: 8080
         env:
         - name: ENV
-          value: {{ .Values.environmentType }}
+          value: {{ quote .Values.environment }}
+        - name: ENV_TYPE
+          value: {{ quote .Values.environmentType }}
+        - name: REGION
+          value: {{ quote .Values.region }}
+        - name: PAYPAL_URL
+          value: {{ quote .Values.paypalUrl }}
+        - name: DB_USER
+          value: {{ quote .Values.dbUser }}
+        - name: DB_PASSWORD
+          value: {{ quote .Values.dbPassword }}
         - name: GPU_ENABLED
-          value: {{ .Values.replicaCount }}
+          value: {{ quote .Values.replicaCount }}
         - name: UI_THEME
-          value: {{ .Values.userInterfaceTheme }}
+          value: {{ quote .Values.userInterfaceTheme }}
         - name: CACHE_SIZE
-          value: {{ .Values.cacheSize }}
+          value: {{ quote .Values.cacheSize }}
         - name: PAGE_LIMIT
-          value: {{ .Values.pageLimit }}
+          value: {{ quote .Values.pageLimit }}
         - name: SORTING
-          value: {{ .Values.sorting }}    
+          value: {{ quote .Values.sorting }}    
         - name: N_BUCKETS
-          value: {{ .Values.nBuckets }}            
+          value: {{ quote .Values.nBuckets }}            
 
 
 

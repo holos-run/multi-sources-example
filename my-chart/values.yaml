@@ -6,8 +6,14 @@
 replicaCount: 1
 
 # Environment settings
-environmentType: dev
-targetRegion: dev
+environment: dev
+environmentType: non-prod
+region: dev
+paypalUrl: "http://example.com"
+dbUser: "empty"
+dbPassword: "empty"
+
+
 
 # Application settings
 userInterfaceTheme: "light"
