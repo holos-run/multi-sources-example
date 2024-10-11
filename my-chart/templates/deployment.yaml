@@ -33,7 +33,7 @@ spec:
         - name: DB_PASSWORD
           value: {{ quote .Values.dbPassword }}
         - name: GPU_ENABLED
-          value: {{ quote .Values.replicaCount }}
+          value: {{ quote .Values.gpuEnabled }}
         - name: UI_THEME
           value: {{ quote .Values.userInterfaceTheme }}
         - name: CACHE_SIZE
