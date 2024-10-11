@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: qa-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: qa
+  # source:
+  #   repoURL: https://github.com/kostis-codefresh/multi-sources-example.git  
+  #   targetRevision: HEAD  
+  #   path: my-chart  
+  #   helm:
+  #     ## DO THIS (values in Git on their own)
+  #     valueFiles:
+  #     - values-production.yaml    
+  sources:
+    - repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
+      path: my-chart
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+        - $values/my-values/envs/qa-values.yaml
+    - repoURL: 'https://github.com/kostis-codefresh/multi-sources-example.git'
+      targetRevision: HEAD
+      ref: values
+  # Sync policy
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true  
+    automated: 
+      prune: true
+      selfHeal: true
