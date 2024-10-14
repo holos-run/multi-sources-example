@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  my-chart:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2024-10-14T18:40:07.443115775+03:00"
+    description: Simple Environment Application
+    digest: 53e3b5e615831092a0fefd30eef68e660b77c13a095f8bdc4fb7dfd5c775e8ce
+    name: my-chart
+    type: application
+    urls:
+    - https://kostis-codefresh.github.io/multi-sources-example/my-chart-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-10-14T18:40:07.442934486+03:00"
+    description: Simple Environment Application
+    digest: fb600bfacef1e843c904de4d4662b3b40e5bd99d4166f50bb036bdfe5f7a79e7
+    name: my-chart
+    type: application
+    urls:
+    - https://kostis-codefresh.github.io/multi-sources-example/my-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-10-14T18:40:07.442595327+03:00"
