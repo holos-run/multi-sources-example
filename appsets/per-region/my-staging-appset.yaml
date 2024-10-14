@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-staging-appset
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - region: us
+      - region: eu
+      - region: asia      
+  template:      
+    metadata:
+      name: 'staging-{{.region}}' 
+    spec:
+      # The project the application belongs to.
+      project: default
+
+      sources:
+        - repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
+          path: my-chart
+          targetRevision: HEAD
+          helm:
+            valueFiles:
+            - $values/my-values/common-values.yaml          
+            - $values/my-values/app-version/staging-values.yaml               
+            - $values/my-values/env-type/non-prod-values.yaml  
+            - $values/my-values/regions/{{.region}}-values.yaml                
+            - $values/my-values/envs/staging-{{.region}}-values.yaml
+        - repoURL: 'https://github.com/kostis-codefresh/multi-sources-example.git'
+          targetRevision: HEAD
+          ref: values
+      
+      # Destination cluster and namespace to deploy the application
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'staging-{{.region}}'
+
+      # Sync policy
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true  
+        automated: 
+          prune: true 
+          selfHeal: true 
+      
