@@ -13,36 +13,36 @@ spec:
       - region: eu
   template:      
     metadata:
-      name: 'prod-{{region}}' 
+      name: 'prod-{{.region}}' 
     spec:
       # The project the application belongs to.
       project: default
 
-    sources:
-      - repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
-        path: my-chart
-        targetRevision: HEAD
-        helm:
-          valueFiles:
-          - $values/my-values/common-values.yaml          
-          - $values/my-values/app-version/prod-values.yaml               
-          - $values/my-values/env-type/prod-values.yaml  
-          - $values/my-values/regions/{{region}}-values.yaml                
-          - $values/my-values/envs/prod-{{region}}-values.yaml
-      - repoURL: 'https://github.com/kostis-codefresh/multi-sources-example.git'
-        targetRevision: HEAD
-        ref: values
+      sources:
+        - repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
+          path: my-chart
+          targetRevision: HEAD
+          helm:
+            valueFiles:
+            - $values/my-values/common-values.yaml          
+            - $values/my-values/app-version/prod-values.yaml               
+            - $values/my-values/env-type/prod-values.yaml  
+            - $values/my-values/regions/{{.region}}-values.yaml                
+            - $values/my-values/envs/prod-{{.region}}-values.yaml
+        - repoURL: 'https://github.com/kostis-codefresh/multi-sources-example.git'
+          targetRevision: HEAD
+          ref: values
       
       # Destination cluster and namespace to deploy the application
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: 'prod-{{region}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'prod-{{.region}}'
 
-    # Sync policy
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true  
-      automated: 
-        prune: true 
-        selfHeal: true 
+      # Sync policy
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true  
+        automated: 
+          prune: true 
+          selfHeal: true 
       
