@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/kostis-codefresh/multi-sources-example.git
       revision: HEAD
       files:
-      - path: "appsets/final/env-config/**/config.json"       
+      - path: "appsets/4-final/env-config/**/config.json"       
   template:      
     metadata:
       name: '{{.env}}' 
