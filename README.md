@@ -7,5 +7,5 @@ We will describe
 * How to create Helm value hierarchies and why this is important
 * Common Helm bad practises and misconceptions that people carry over to Argo CD
 
-Read the full blog at XXX
+Read the full blog at https://codefresh.io/blog/helm-values-argocd/ 
 
