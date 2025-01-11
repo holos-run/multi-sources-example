@@ -61,4 +61,8 @@ Platform: Components: namespaces: {
 	path: "components/namespaces"
 	annotations: "app.holos.run/description": "namespaces for all environments"
 	labels: component:                        "namespaces"
+	// env is a required parameter, see components/componentconfig-gitops.cue
+	// where it's needed for each Application resource managed for each component
+	// BuildPlan.
+	parameters: env: "all"
 }

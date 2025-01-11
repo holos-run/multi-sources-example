@@ -16,4 +16,7 @@ Component: #Kubernetes & {
 			metadata: labels: CONFIG
 		}
 	}
+
+	// We also need to manage a namespace for the ArgoCD Application resources.
+	Resources: Namespace: "argocd": _
 }
