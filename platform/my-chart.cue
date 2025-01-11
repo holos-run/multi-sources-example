@@ -25,7 +25,7 @@ import "holos.example/config/environments"
 		outputBaseDir: "environments/\(env)"
 	}
 	// CUE supports string substitution.
-	annotations: "app.holos.run/description": "my-chart for environment \(parameters.env)"
+	annotations: "app.holos.run/description": "my-chart \(parameters.chart) for environment \(parameters.env)"
 }
 
 // Manage my-chart for each of the three environments.  Platform components are
