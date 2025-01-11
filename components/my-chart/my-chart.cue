@@ -30,9 +30,12 @@ component: #Helm & {
 	//
 	// [valueFiles]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
 	Values: {
-		// Kubernetes settings default values indicated with a *
-		replicaCount: uint16 | *1
+		// Define replicaCount as a required (!) unsigned 16 bit integer (uint16),
+		// forcing the field to be defined in one of the valueFiles.
+		replicaCount!: uint16
 
+		// Note there is no precedence or hierarchy, all the values are unified
+		// together into one structure.  Conflicts are errors by design.
 		valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
 		valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
 		valueFiles["my-values/regions/\(parameters.region)-values.yaml"]

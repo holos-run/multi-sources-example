@@ -24,6 +24,14 @@ import "holos.example/config/environments"
 		// to the env field defined by environments.#Config
 		outputBaseDir: "environments/\(env)"
 	}
+
+	// selector labels useful with holos show buildplans --selector env=qa
+	labels: {
+		env:     parameters.env
+		region:  parameters.region
+		type:    parameters.type
+		version: parameters.version
+	}
 	// CUE supports string substitution.
 	annotations: "app.holos.run/description": "my-chart \(parameters.chart) for environment \(parameters.env)"
 }

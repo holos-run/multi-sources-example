@@ -1,5 +1,6 @@
 # Environment settings
 environment: qa
+replicaCount: 3
 
 # Application settings
 userInterfaceTheme: "dark"

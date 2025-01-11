@@ -1,5 +1,6 @@
 # Environment settings
 environment: integration-non-gpu
+replicaCount: 3
 
 # Application settings
 userInterfaceTheme: "dark"

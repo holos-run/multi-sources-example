@@ -1,11 +1,11 @@
 # Kubernetes settings
-replicaCount: 5
+# NOTE: This value was never actually used in the Helm Hierarchies guide, it was
+# always overridden.  This is a great example of why hierarchies are a problem,
+# it's difficult to tell if a value is used even for a simple case like this.
+# replicaCount: 5
 
 # Environment settings
 environmentType: production
 paypalUrl: "production.paypal.com"
 dbUser: "prod_username"
 dbPassword: "prod_password"
-
-
-

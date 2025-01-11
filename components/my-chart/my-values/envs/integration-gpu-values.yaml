@@ -1,5 +1,6 @@
 # Environment settings
 environment: integration-gpu
+replicaCount: 3
 
 # Application settings
 userInterfaceTheme: "light"
