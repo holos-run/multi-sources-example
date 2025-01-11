@@ -50,3 +50,15 @@ for CONFIG in environments.config {
 		}
 	}
 }
+
+// Manage namespaces for all of the environments.  We manage this as one
+// component so we can manage the namespace lifecycle separately from the
+// resources contained in the namespace.
+//
+// Migrated from https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L45
+Platform: Components: namespaces: {
+	name: "namespaces"
+	path: "components/namespaces"
+	annotations: "app.holos.run/description": "namespaces for all environments"
+	labels: component:                        "namespaces"
+}
