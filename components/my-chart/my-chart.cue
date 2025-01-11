@@ -24,18 +24,26 @@ component: #Helm & {
 		}
 	}
 
-	// Unify the values together.  Prior to the migration to holos, helm merged
-	// the values together, writing over fields without error.  CUE is different,
-	// it will error if the same field conflicts.  Migrated from [valueFiles].
+	// Migrate the Helm Hierarchy preserving the behavior of over writing values.
+	// Migrated from [valueFiles].  Later files win.
 	//
 	// [valueFiles]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
-	Values: {
-		valueFiles["my-values/common-values.yaml"]
-		valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
-		valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
-		valueFiles["my-values/regions/\(parameters.region)-values.yaml"]
-		valueFiles["my-values/envs/\(parameters.env)-values.yaml"]
-	}
+	ValueFiles: [{
+		name:   "common-values.yaml"
+		values: valueFiles["my-values/common-values.yaml"]
+	}, {
+		name:   "version-values.yaml"
+		values: valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
+	}, {
+		name:   "type-values.yaml"
+		values: valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
+	}, {
+		name:   "region-values.yaml"
+		values: valueFiles["my-values/regions/\(parameters.region)-values.yaml"]
+	}, {
+		name:   "env-values.yaml"
+		values: valueFiles["my-values/envs/\(parameters.env)-values.yaml"]
+	}]
 }
 
 // holos represents the output for the holos command line to process.  The holos
