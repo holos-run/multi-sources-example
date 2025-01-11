@@ -2,6 +2,15 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
+    kubernetes.io/metadata.name: argocd
+  name: argocd
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.1.0
     env: integration-gpu
     kubernetes.io/metadata.name: integration-gpu
@@ -14,6 +23,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.2.0
     env: integration-non-gpu
     kubernetes.io/metadata.name: integration-non-gpu
@@ -26,6 +36,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.1.0
     env: prod-eu
     kubernetes.io/metadata.name: prod-eu
@@ -38,6 +49,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.1.0
     env: prod-us
     kubernetes.io/metadata.name: prod-us
@@ -50,6 +62,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.2.0
     env: qa
     kubernetes.io/metadata.name: qa
@@ -62,6 +75,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.2.0
     env: staging-eu
     kubernetes.io/metadata.name: staging-eu
@@ -74,6 +88,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
+    argocd.argoproj.io/instance: all-namespaces
     chart: 0.2.0
     env: staging-us
     kubernetes.io/metadata.name: staging-us

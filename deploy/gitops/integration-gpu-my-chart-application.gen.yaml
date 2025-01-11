@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    labels:
+        env: integration-gpu
+    name: integration-gpu-my-chart
+    namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+    project: default
+    source:
+        path: deploy/environments/integration-gpu/components/my-chart
+        repoURL: https://github.com/holos-run/multi-sources-example.git
+        targetRevision: main
