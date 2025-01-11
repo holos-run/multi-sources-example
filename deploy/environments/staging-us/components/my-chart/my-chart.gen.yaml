@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: simple-service
+  namespace: staging-us
 spec:
   ports:
   - port: 80
@@ -15,6 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-deployment
+  namespace: staging-us
 spec:
   replicas: 3
   selector:

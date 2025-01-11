@@ -17,12 +17,19 @@ parameters: {
 // BuildPlan for holos to execute, rendering the manifests.
 component: #Helm & {
 	Chart: {
+		// Migrated from https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L25
 		version: parameters.chart
 		repository: {
 			name: "multi-sources-example"
-			url:  "https://kostis-codefresh.github.io/multi-sources-example"
+			// Migrated from https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L23
+			url: "https://kostis-codefresh.github.io/multi-sources-example"
 		}
 	}
+
+	// Migrated from https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L40
+	// We use kustomize to manage the namespace, similar to how the original
+	// article uses the ApplicationSet template to specify the namespace.
+	KustomizeConfig: Kustomization: namespace: parameters.env
 
 	// Unify the values together.  Prior to the migration to holos, helm merged
 	// the values together, writing over fields without error.  CUE is different,
