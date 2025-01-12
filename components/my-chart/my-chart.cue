@@ -31,12 +31,32 @@ component: #Helm & {
 	// article uses the ApplicationSet template to specify the namespace.
 	KustomizeConfig: Kustomization: namespace: parameters.env
 
+	// Preserve the helm hierarchy behavior.  Note the conventional way to handle
+	// values in Holos is with Unification, not as a hierarchy.  The purpose of
+	// the valueFiles field is to provide a direct migration path from an
+	// ApplicationSet generator + valueFiles combination.
+	ValueFiles: [
+		{
+			name:   "version-values.yaml"
+			values: valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
+		}, {
+			name:   "type-values.yaml"
+			values: valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
+		}, {
+			name:   "region-values.yaml"
+			values: valueFiles["my-values/regions/\(parameters.region)-values.yaml"]
+		}, {
+			name:   "env-values.yaml"
+			values: valueFiles["my-values/envs/\(parameters.env)-values.yaml"]
+		},
+	]
+
 	// Unify the values together.  Prior to the migration to holos, helm merged
 	// the values together, writing over fields without error.  CUE is different,
 	// it will error if the same field conflicts.  Migrated from [valueFiles].
 	//
 	// [valueFiles]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
-	Values: {
+	_Values: {
 		// Define replicaCount as a required (!) unsigned 16 bit integer (uint16),
 		// forcing the field to be defined in one of the valueFiles.
 		replicaCount!: uint16
