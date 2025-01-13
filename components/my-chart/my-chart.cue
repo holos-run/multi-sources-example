@@ -36,9 +36,6 @@ component: #Helm & {
 	//
 	// [valueFiles]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
 	ValueFiles: [{
-		name:   "common-values.yaml"
-		values: valueFiles["my-values/common-values.yaml"]
-	}, {
 		name:   "version-values.yaml"
 		values: valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
 	}, {
@@ -61,5 +58,4 @@ component: #Helm & {
 holos: component.BuildPlan
 
 // Migrated from https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
-valueFiles: _ @embed(glob=my-values/*.yaml)
-valueFiles: _ @embed(glob=my-values/*/*-values.yaml)
+valueFiles: _ @embed(glob=my-values/*/*.yaml)
