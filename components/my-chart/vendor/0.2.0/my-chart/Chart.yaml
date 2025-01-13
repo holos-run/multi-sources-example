@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 0.2.0
-description: Simple Environment Application
-name: my-chart
-type: application
-version: 0.2.0
