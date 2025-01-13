@@ -1,11 +1,5 @@
-# Kubernetes settings
-replicaCount: 5
-
 # Environment settings
 environmentType: production
 paypalUrl: "production.paypal.com"
 dbUser: "prod_username"
 dbPassword: "prod_password"
-
-
-
