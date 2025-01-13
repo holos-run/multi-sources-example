@@ -77,6 +77,19 @@ metadata:
   labels:
     argocd.argoproj.io/instance: all-namespaces
     chart: 0.2.0
+    env: staging-ap
+    kubernetes.io/metadata.name: staging-ap
+    region: ap
+    type: non-prod
+    version: staging
+  name: staging-ap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    argocd.argoproj.io/instance: all-namespaces
+    chart: 0.2.0
     env: staging-eu
     kubernetes.io/metadata.name: staging-eu
     region: eu
