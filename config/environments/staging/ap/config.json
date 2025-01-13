@@ -1,0 +1,7 @@
+{
+    "env": "staging-ap",
+    "region": "ap",
+    "type": "non-prod",
+    "version": "staging",
+    "chart": "0.2.0"
+  }

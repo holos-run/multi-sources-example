@@ -13,8 +13,8 @@ config: [FILEPATH=string]: #Config
 
 // #Config defines the schema of each config.json file.
 #Config: {
-	env:     "qa" | "integration-gpu" | "integration-non-gpu" | "staging-us" | "staging-eu" | "prod-us" | "prod-eu"
-	region:  "us" | "eu"
+	env:     "qa" | "integration-gpu" | "integration-non-gpu" | "staging-us" | "staging-eu" | "staging-ap" | "prod-us" | "prod-eu"
+	region:  "us" | "eu" | "ap"
 	type:    "prod" | "non-prod"
 	version: "qa" | "staging" | "prod"
 	chart:   =~"^[0-9]+\\.[0-9]+\\.[0-9]+$"
