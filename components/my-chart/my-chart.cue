@@ -31,23 +31,15 @@ component: #Helm & {
 	// article uses the ApplicationSet template to specify the namespace.
 	KustomizeConfig: Kustomization: namespace: parameters.env
 
-	// Migrate the Helm Hierarchy preserving the behavior of over writing values.
-	// Migrated from [valueFiles].  Later files win.
+	// Unified values.  Migrated from [valueFiles].  Conflicting values are errors.
 	//
 	// [valueFiles]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/appsets/4-final/all-my-envs-appset-with-version.yaml#L27-L32
-	ValueFiles: [{
-		name:   "version-values.yaml"
-		values: valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
-	}, {
-		name:   "type-values.yaml"
-		values: valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
-	}, {
-		name:   "region-values.yaml"
-		values: valueFiles["my-values/regions/\(parameters.region)-values.yaml"]
-	}, {
-		name:   "env-values.yaml"
-		values: valueFiles["my-values/envs/\(parameters.env)-values.yaml"]
-	}]
+	Values: {
+		valueFiles["my-values/app-version/\(parameters.version)-values.yaml"]
+		valueFiles["my-values/env-type/\(parameters.type)-values.yaml"]
+		valueFiles["my-values/regions/\(parameters.region)-values.yaml"]
+		valueFiles["my-values/envs/\(parameters.env)-values.yaml"]
+	}
 }
 
 // holos represents the output for the holos command line to process.  The holos
