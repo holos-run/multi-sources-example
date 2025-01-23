@@ -8,3 +8,6 @@ Thumbs.db
 node_modules/
 tmp/
 vendor/**/*.tgz
+deploy/values/
+components/my-app/values/
+config/my-app/deployment/customers/

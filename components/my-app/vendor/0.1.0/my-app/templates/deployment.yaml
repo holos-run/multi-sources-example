@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: trivial-go-web-app
+  template:
+    metadata:
+      labels:
+        app: trivial-go-web-app
+    spec:
+      containers:
+      - name: webserver-simple
+        imagePullPolicy: Always
+        image: docker.io/kostiscodefresh/simple-env-app:0.1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CUSTOMER_ID
+          value: {{ quote .Values.customerID }}
+        - name: ENABLED
+          value: {{ quote .Values.enabled }}
+        - name: IMAGE
+          value: {{ quote .Values.image }}
+        - name: VERSION
+          value: {{ quote .Values.version }}
+        - name: DOMAIN
+          value: {{ quote .Values.domain }}
+        - name: REPLICAS
+          value: {{ quote .Values.replicas }}
+        - name: CLIENT_ID
+          value: {{ quote .Values.clientID }}
+        - name: ISSUER
+          value: {{ quote .Values.issuer }}
+        - name: PROJECT_ID
+          value: {{ quote .Values.projectID }}
+        - name: ACCOUNT_ID
+          value: {{ quote .Values.accountID }}
+        - name: ARN
+          value: {{ quote .Values.arn }}
+        - name: CORES
+          value: {{ quote .Values.cores }}
+        - name: MEMORY
+          value: {{ quote .Values.memory }}

@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    labels:
+        env: prod
+    name: customer-emchwmlo-myapp364-prod8-customer
+    namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+    project: default
+    source:
+        path: deploy/clusters/prod8-customer/customers/customer-emchwmlo/components/my-app
+        repoURL: https://github.com/holos-run/multi-sources-example.git
+        targetRevision: main

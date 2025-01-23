@@ -1,0 +1,13 @@
+enabled: true
+image: oci://containers.example/second-app
+version: 0.1.0
+domain: example.com
+replicas: 1
+clientID: https://example.com
+issuer: https://login.example.com
+projectID: example-123456
+accountID: 123456789012
+arn: "arn::::::::"
+cores: 1.0
+memory: 512
+labels: {}

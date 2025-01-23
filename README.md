@@ -489,14 +489,33 @@ deploy
 26 directories, 16 files
 ```
 
-## Next Steps
+## Flattening the Hierarchy
 
-Move on to Part 2.
+Flattening the hierarchy disables `my-chart` and switches to `my-app` using CUE
+build tags.  Execute the following process.
 
-- Part 1: Direct migration from [ApplicationSet] Helm Hierarchy to Holos.
-- Part 2: Fix the duplicate config.json file.
-- Part 3: Unify the value files.
-- Part 4: Mix in progressive delivery.
+Generate the deployment configs and the 11 layer helm value files hierarchy.
+
+    go run ./generator
+
+Step 1 - Render the manifests using the helm hierarchy.
+
+    holos render platform --selector customer=customer-emchwmlo -t flatten -t step1
+
+Step 2 - Flatten the hierarchy into values.yaml files organized along the same
+two dimensions as the deployment config.json files.
+
+    holos render platform --selector customer=customer-emchwmlo -t flatten -t step2
+
+Step 3 - Render the manifests using the flattened values.  Observe no changes
+are made to the deploy directory.
+
+    holos render platform --selector customer=customer-emchwmlo -t flatten -t step3
+
+Rendering all 4000 build plans takes a few minutes and creates thousands of
+files.  The generator is deterministic, so we've left most of these files out of
+the commit history. The rendered artifacts for customer-emchwmlo are included as
+an example to browse.
 
 [rendered manifest pattern]: https://holos.run/blog/the-rendered-manifests-pattern
 [v0.1.0]: https://github.com/holos-run/multi-sources-example/blob/v0.1.0/

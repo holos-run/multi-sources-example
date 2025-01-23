@@ -1,0 +1,26 @@
+---
+# Source: render-values/templates/values.yaml
+accountID: 711523864782
+arn: arn:partition:service:region:account-id:awbmwkhj
+clientID: https://wylpmodgfa.example
+cores: 72.1
+customerID: customer-emchwmlo
+domain: ibwxvwkdib.example
+enabled: false
+image: oci://example.com/mibpeiby
+issuer: https://feqkgcszkn.example
+labels:
+  label1: tcrlytospgrs
+  label2: cztrtxfqjgla
+  label3: xrxagcfzibsd
+  label4: liwcndftvgmk
+  label5: smwvgcitfluw
+  label6: ijxsdeqrlkmz
+  label7: pteuztllsxth
+  label8: haduadulnaas
+  label9: auzshrsnitlr
+  label10: giulcvosfkdg
+memory: 13252
+projectID: my-project-655733
+replicas: 9
+version: v78.74.0

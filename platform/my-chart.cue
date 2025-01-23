@@ -1,3 +1,4 @@
+@if(!flatten)
 package holos
 
 // Imports ./config/environments/*.cue as the environments cue package.  The

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    argocd.argoproj.io/instance: customer-emchwmlo-myapp193-prod6-internal
+  name: simple-deployment
+spec:
+  replicas: 9
+  selector:
+    matchLabels:
+      app: trivial-go-web-app
+  template:
+    metadata:
+      labels:
+        app: trivial-go-web-app
+    spec:
+      containers:
+      - env:
+        - name: CUSTOMER_ID
+          value: customer-emchwmlo
+        - name: ENABLED
+          value: "false"
+        - name: IMAGE
+          value: oci://example.com/mibpeiby
+        - name: VERSION
+          value: v78.74.0
+        - name: DOMAIN
+          value: ibwxvwkdib.example
+        - name: REPLICAS
+          value: "9"
+        - name: CLIENT_ID
+          value: https://wylpmodgfa.example
+        - name: ISSUER
+          value: https://feqkgcszkn.example
+        - name: PROJECT_ID
+          value: my-project-655733
+        - name: ACCOUNT_ID
+          value: "7.11523864782e+11"
+        - name: ARN
+          value: arn:partition:service:region:account-id:awbmwkhj
+        - name: CORES
+          value: "72.1"
+        - name: MEMORY
+          value: "13252"
+        image: docker.io/kostiscodefresh/simple-env-app:0.1.0
+        imagePullPolicy: Always
+        name: webserver-simple
+        ports:
+        - containerPort: 8080

@@ -20,7 +20,7 @@ parameters: {
 	OutputBaseDir: _
 	// Application resources are Environment scoped.  Note the combination of
 	// component name and environment must be unique.
-	_ArgoAppName: "\(parameters.env)-\(Name)"
+	_ArgoAppName: string | *"\(parameters.env)-\(Name)"
 
 	// Allow other aspects of the platform configuration to refer to
 	// `Component._ArgoApplication` to get a handle on the Application resource
@@ -74,12 +74,14 @@ parameters: {
 		}
 	}
 
-	Artifacts: "\(Name)-application": {
-		artifact: ArtifactPath
+	_GitOpsArtifact: {
+		artifact: string | *ArtifactPath
 		generators: [{
 			kind:   "Resources"
 			output: artifact
 			resources: Application: (_ArgoAppName): _ArgoApplication
 		}]
 	}
+
+	Artifacts: "\(Name)-application": _GitOpsArtifact
 }
