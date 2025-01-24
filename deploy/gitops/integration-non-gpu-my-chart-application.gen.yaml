@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    labels:
+        env: integration-non-gpu
+    name: integration-non-gpu-my-chart
+    namespace: argocd
+spec:
+    destination:
+        namespace: integration-non-gpu
+        server: https://kubernetes.default.svc
+    project: default
+    source:
+        path: deploy/environments/integration-non-gpu/components/my-chart
+        repoURL: https://github.com/holos-run/multi-sources-example
+        targetRevision: main
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+        syncOptions:
+            - CreateNamespace=true
