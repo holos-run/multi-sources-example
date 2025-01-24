@@ -1,3 +1,16 @@
+// Usage:
+//
+//	go run ./generator
+//
+// Writes deployment config.json files to
+// config/my-app/deployment/customers/*/clusters/*/config./json
+//
+// Writes helm value files as an 11 layer hierarchy to components/my-app/values
+// organized by their position in the override hierarchy.
+//
+// Used to generate data for the following command:
+//
+//	holos render platform -t flatten -t step1
 package main
 
 import (
